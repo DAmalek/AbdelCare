@@ -1,4 +1,4 @@
-import { db } from "../config/database.js";
+import db from "../config/database.js";
 
 async function findByEmail(email) {
   return await db.query(
@@ -18,4 +18,11 @@ async function createCostumerAccount({ email, name, password, cpf }) {
   );
 }
 
-export default { findByEmail, createCostumerAccount };
+async function insertCostumerSession({ costumer_id, token }) {
+  await db.query(
+    `INSERT INTO costumer_sessions (costumer_id, token) VALUES ($1,$2);`,
+    [costumer_id, token]
+  );
+}
+
+export default { findByEmail, createCostumerAccount, insertCostumerSession };
