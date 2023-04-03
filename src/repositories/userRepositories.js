@@ -14,11 +14,12 @@ async function createCostumerAccount({ email, name, password, cpf }) {
     `
     INSERT INTO costumers (email, name , password, cpf) VALUES ($1, $2, $3,$4)
     `,
-    [name, email, password, cpf]
+    [email, name, password, cpf]
   );
 }
 
 async function insertCostumerSession({ costumer_id, token }) {
+  console.log(costumer_id, token);
   await db.query(
     `INSERT INTO costumer_sessions (costumer_id, token) VALUES ($1,$2);`,
     [costumer_id, token]

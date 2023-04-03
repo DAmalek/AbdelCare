@@ -10,6 +10,6 @@ userRouter.post(
   schemaValidation(costumerSchema),
   userController.signUp
 );
-userRouter.post("sign-in", userController.signIn);
+userRouter.post("/sign-in/costumer", userController.signIn);
 
 export default userRouter;
