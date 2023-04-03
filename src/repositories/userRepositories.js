@@ -18,6 +18,10 @@ async function findMedicByEmail(email) {
   );
 }
 
+async function findCostumerById(id) {
+  return await db.query(`SELECT * FROM costumers WHERE id=$1`, [id]);
+}
+
 async function createCostumerAccount({ email, name, password, cpf }) {
   await db.query(
     `
@@ -55,6 +59,7 @@ async function insertMedicSession({ medic_id, token }) {
 export default {
   findByEmail,
   findMedicByEmail,
+  findCostumerById,
   createCostumerAccount,
   insertCostumerSession,
   createMedicAccount,
